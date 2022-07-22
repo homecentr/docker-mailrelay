@@ -5,7 +5,7 @@ plugins {
 group 'org.homecentr'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories {
     mavenCentral()
@@ -23,7 +23,7 @@ dependencies {
     testImplementation group: 'junit', name: 'junit', version: '4.13.2'
     testImplementation group: 'org.testcontainers', name: 'testcontainers', version: '1.17.3'
     testImplementation group: 'io.homecentr', name: 'testcontainers-extensions', version: '1.6.0'
-    testImplementation group: 'commons-net', name: 'commons-net', version: '3.8.0'
+    testImplementation group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
     testImplementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
     testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.36'
 }
@@ -35,3 +35,4 @@ test {
         logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
     }
 }
+targetCompatibility = JavaVersion.VERSION_11
