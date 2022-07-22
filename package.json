@@ -1,15 +1,27 @@
 { 
-  "name": "homecentr-$$IMAGE_NAME$$",
+  "name": "homecentr-mailrelay",
   "version": "1.0.0",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/homecentr/docker-$$IMAGE_NAME$$.git"
+    "url": "git+https://github.com/homecentr/docker-mailrelay.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/homecentr/docker-$$IMAGE_NAME$$/issues"
+    "url": "https://github.com/homecentr/docker-mailrelay/issues"
   },
-  "homepage": "https://github.com/homecentr/docker-$$IMAGE_NAME$$#readme"
+  "homepage": "https://github.com/homecentr/docker-mailrelay#readme",
+  "release": {
+    "branches": [
+      { "name": "master" },
+      { "name": "feat/*", "channel": "preview", "prerelease": true },
+      { "name": "fix/*", "channel": "preview", "prerelease": true }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github"
+    ]
+  }
 }

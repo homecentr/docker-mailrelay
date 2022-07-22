@@ -1,11 +1,9 @@
 name: CI/CD on master
 on:
   push:
-    branches:
-      - master
 
 env:
-  IMAGE_NAME: "homecentr/$$IMAGE_NAME$$"
+  IMAGE_NAME: "homecentr/mailrelay"
 
 jobs:
   build:
