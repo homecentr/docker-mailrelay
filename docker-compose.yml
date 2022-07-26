@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  image:
+    build: .
+    image: homecentr/mailrelay:preview
+    ports:
+      - "2525:2525"
+    volumes:
+      - "./example:/config:ro"

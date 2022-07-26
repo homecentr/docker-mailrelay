@@ -7,21 +7,11 @@
 
 # Homecentr - mailrelay
 
-## Usage
-
-```yml
-version: "3.7"
-services:
-  mailrelay:
-    build: .
-    image: homecentr/mailrelay
-```
-
 ## Exposed ports
 
 | Port | Protocol | Description |
 |------|------|-------------|
-| ? (2525 is recommended, defined in the config file) | TCP | SMTP |
+| ? (2525 is recommended, exact port is defined in the config file) | TCP | SMTP |
 
 ## Volumes
 
