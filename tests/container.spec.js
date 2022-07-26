@@ -1,7 +1,7 @@
 const path = require("path");
 const nodemailer = require("nodemailer");
 const { DockerComposeEnvironment } = require("testcontainers");
-const { updateConfig } = require("./utils");
+const { updateConfig, getMandatoryVariable } = require("./utils");
 
 describe("MailRelay container should", () => {
     var container;
