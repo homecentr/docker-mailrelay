@@ -7,4 +7,6 @@ jobs:
     uses: homecentr/docker-workflows/.github/workflows/docker-image-ci-cd.yml@feat/v1
     with:
       imageName: homecentr/mailrelay
-    secrets: inherit 
+      MAIL_FROM: ${{ secrets.MAIL_FROM }}
+      MAIL_TO: ${{ secrets.MAIL_TO }}
+    secrets: inherit
