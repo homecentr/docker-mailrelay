@@ -1,15 +1,13 @@
 const path = require("path");
 const nodemailer = require("nodemailer");
 const { DockerComposeEnvironment } = require("testcontainers");
-const { updateConfig, getMandatoryVariable } = require("./utils");
+const { getMandatoryVariable } = require("./utils");
 
 describe("MailRelay container should", () => {
     var container;
     var environment;
 
     beforeAll(async () => {
-        updateConfig();
-
         const composeFilePath = path.resolve(__dirname, "..");
 
         environment = await new DockerComposeEnvironment(composeFilePath, "docker-compose.yml")
@@ -24,7 +22,6 @@ describe("MailRelay container should", () => {
     });
 
     it("Listen on configured port", async () => {
-
         const transporter = nodemailer.createTransport({
             host: 'localhost',
             port: container.getMappedPort(2525)
