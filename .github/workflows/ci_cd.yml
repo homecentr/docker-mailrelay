@@ -17,6 +17,12 @@ jobs:
           sed -i 's/_SENDGRID_API_KEY_/${{ secrets.SENDGRID_API_KEY }}/' ./example/mailrelay.json
           cat ./example/mailrelay.json
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: smtp-debug
+          path: |
+            example/*
+
       - uses: homecentr/action-build-docker-image@feat/v1
         with:
           imageName: "homecentr/mailrelay"
