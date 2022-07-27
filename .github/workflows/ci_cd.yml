@@ -14,6 +14,7 @@ jobs:
 
       - name: Replace SendGrid token
         run: |
+          sha1sum ./example/mailrelay.json
           sed -i 's/_SENDGRID_API_KEY_/${{ secrets.SENDGRID_API_KEY }}/' ./example/mailrelay.json
           sha1sum ./example/mailrelay.json
 
