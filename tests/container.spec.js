@@ -1,35 +1,36 @@
 const path = require("path");
 const nodemailer = require("nodemailer");
 const { DockerComposeEnvironment } = require("testcontainers");
-const { getMandatoryVariable } = require("./utils");
 
 describe("MailRelay container should", () => {
-    var container;
-    var environment;
+    var mailRelayContainer;
+    var composeEnvironment;
 
     beforeAll(async () => {
         const composeFilePath = path.resolve(__dirname, "..");
 
-        environment = await new DockerComposeEnvironment(composeFilePath, "docker-compose.yml")
+        composeEnvironment = await new DockerComposeEnvironment(composeFilePath, "docker-compose.yml")
             .withBuild()
             .up();
 
-        container = environment.getContainer("image_1");
+        mailRelayContainer = composeEnvironment.getContainer("image_1");
     });
 
     afterAll(async () => {
-        await environment.down();
+        await composeEnvironment.down();
     });
 
     it("Listen on configured port", async () => {
+        // Arrange
         const transporter = nodemailer.createTransport({
             host: 'localhost',
-            port: container.getMappedPort(2525)
+            port: mailRelayContainer.getMappedPort(2525)
         });
 
+        // Act
         await transporter.sendMail({
-            from: getMandatoryVariable("MAIL_FROM"),
-            to: getMandatoryVariable("MAIL_TO"),
+            from: "sender@test.com",
+            to: "recipient@example.com",
             subject: 'Test Email Subject',
             html: 'Example HTML Message Body'
         });

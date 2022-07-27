@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "docker-compose build",
-    "start": "docker-compose run image",
+    "start": "docker-compose up",
     "start:shell": "docker-compose run --user=0:0 --entrypoint ash image",
     "test": "jest --testTimeout=60000",
     "push:preview": "docker-compose push image"

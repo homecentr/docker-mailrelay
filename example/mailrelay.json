@@ -1,9 +1,9 @@
 {
-    "smtp_server":   "smtp.sendgrid.net",
-    "smtp_port":     587,
+    "smtp_server":   "smtp_mock",
+    "smtp_port":     1025,
     "smtp_starttls": true,
-    "smtp_username": "apikey",
-    "smtp_password": "_SENDGRID_API_KEY_",
+    "smtp_username": "some-user",
+    "smtp_password": "some-password",
     "smtp_max_email_size": 10485760,
     "smtp_login_auth_type": false,
     "local_listen_ip": "0.0.0.0",

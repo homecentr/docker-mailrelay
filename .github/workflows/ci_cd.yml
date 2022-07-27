@@ -12,23 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: Replace SendGrid token
-        run: |
-          sed -i 's/_SENDGRID_API_KEY_/${{ secrets.SENDGRID_API_KEY }}/' ./example/mailrelay.json
-          cat ./example/mailrelay.json
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: smtp-debug
-          path: |
-            example/*
-
       - uses: homecentr/action-build-docker-image@feat/v1
         with:
           imageName: "homecentr/mailrelay"
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           dockerHubUserName: ${{ secrets.DOCKERHUB_USERNAME }}
           dockerHubPassword: ${{ secrets.DOCKERHUB_PASSWORD }}
-        env:
-          MAIL_FROM: ${{ secrets.MAIL_FROM }}
-          MAIL_TO: ${{ secrets.MAIL_TO }}
