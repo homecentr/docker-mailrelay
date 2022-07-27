@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Replace SendGrid token
-        run: sed -i 's/$SENDGRID_API_KEY$/${{ secrets.SENDGRID_API_KEY }}/' ./example/mailrelay.json
+        run: sed -i 's/_SENDGRID_API_KEY_/${{ secrets.SENDGRID_API_KEY }}/' ./example/mailrelay.json
 
       - uses: homecentr/action-build-docker-image@feat/v1
         with:
