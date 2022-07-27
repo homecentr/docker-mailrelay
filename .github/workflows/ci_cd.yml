@@ -4,9 +4,14 @@ on:
 
 jobs:
   build:
-    uses: homecentr/docker-workflows/.github/workflows/docker-image-ci-cd.yml@feat/v1
-    with:
-      imageName: homecentr/mailrelay
-      MAIL_FROM: ${{ secrets.MAIL_FROM }}
-      MAIL_TO: ${{ secrets.MAIL_TO }}
-    secrets: inherit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # To add version tags
+      packages: write # To push docker image
+      issues: write   # Semantic release to link issues
+    steps:
+      - uses: actions/checkout@master
+
+      - uses: homecentr/action-build-docker-image@feat/v1
+        with:
+          imageName: "homecentr/mailrelay"
