@@ -12,9 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
+      - name: Replace SendGrid token
+
       - uses: homecentr/action-build-docker-image@feat/v1
         with:
           imageName: "homecentr/mailrelay"
           dockerHubUserName: ${{ secrets.DOCKERHUB_USERNAME }}
           dockerHubPassword: ${{ secrets.DOCKERHUB_PASSWORD }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
