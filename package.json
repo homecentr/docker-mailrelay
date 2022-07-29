@@ -1,15 +1,31 @@
-{ 
-  "name": "homecentr-$$IMAGE_NAME$$",
+{
+  "name": "@homecentr/mailrelay",
   "version": "1.0.0",
   "description": "",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/homecentr/docker-$$IMAGE_NAME$$.git"
-  },
-  "author": "",
+  "author": "Lukas Holota",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/homecentr/docker-$$IMAGE_NAME$$/issues"
+  "scripts": {
+    "build": "docker-compose build",
+    "start": "docker-compose up",
+    "start:shell": "docker-compose run --user=0:0 --entrypoint ash image",
+    "test": "jest --testTimeout=60000",
+    "push:preview": "docker-compose push image"
   },
-  "homepage": "https://github.com/homecentr/docker-$$IMAGE_NAME$$#readme"
+  "release": {
+    "branches": [
+      "master"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
+    "cross-env": "^7.0.3",
+    "jest": "^28.1.3",
+    "nodemailer": "^6.7.7",
+    "testcontainers": "^8.12.0"
+  }
 }

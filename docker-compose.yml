@@ -1,6 +1,26 @@
-version: "3.7"
+version: "3.9"
 services:
-  $$IMAGE_NAME$$:
+  image:
     build: .
-    image: homecentr/$$IMAGE_NAME$$
-    restart: unless-stopped
+    image: homecentr/mailrelay:preview
+    networks:
+      internal:
+    ports:
+      - "2525:2525"
+    volumes:
+      - "./example/mailrelay.json:/config/mailrelay.json:ro"
+      - "./example/smtp.crt:/etc/ssl/certs/ca-certificates.crt:ro"
+
+  smtp_mock:
+    image: kbedel/fake-smtp-server
+    command: node index.js --debug --keystore /keystore.pfx --passphrase Pass --smtpAuth some-user:some-password
+    ports:
+      - "1080:1080"
+    volumes:
+      - "./example/smtp.pfx:/keystore.pfx"
+    networks:
+      internal:
+
+networks:
+  internal:
+    driver: bridge
