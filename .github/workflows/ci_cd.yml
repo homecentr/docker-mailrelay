@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - uses: homecentr/action-build-docker-image
+      - uses: homecentr/action-build-docker-image@master
         with:
           imageName: "homecentr/mailrelay"
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
