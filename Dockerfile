@@ -8,7 +8,7 @@ RUN addgroup --gid 1000 nonroot && \
     adduser -u 1000 -G nonroot -D -H -g "" nonroot && \
     chmod a+x /usr/local/bin/mailrelay && \
     apk add --no-cache \
-        ca-certificates=20211220-r0 \
+        ca-certificates=20220614-r0 \
         libc6-compat=1.2.3-r0
 
 USER 1000:1000
