@@ -2,7 +2,7 @@
 [![](https://badgen.net/docker/pulls/homecentr/mailrelay)](https://hub.docker.com/repository/docker/homecentr/mailrelay) 
 [![](https://badgen.net/docker/size/homecentr/mailrelay)](https://hub.docker.com/repository/docker/homecentr/mailrelay)
 
-![CI/CD on master](https://github.com/homecentr/docker-mailrelay/workflows/CI/CD%20on%20master/badge.svg)
+[![CI/CD](https://github.com/homecentr/docker-mailrelay/actions/workflows/ci_cd.yml/badge.svg)](https://github.com/homecentr/docker-mailrelay/actions/workflows/ci_cd.yml)
 
 
 # Homecentr - mailrelay
